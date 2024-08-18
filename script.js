@@ -23,6 +23,7 @@ const timeScreen = document.querySelector("#timer");
 
 let current = focoBt;
 let currentTime = 1500;
+let currentTotalTime = 1500;
 
 // Context Control - Background and icons ========================
 function changeBackground(element, value){
@@ -43,7 +44,8 @@ function changeBackground(element, value){
 
                 pause() 
                 displayPlay();
-                currentTime = 1500;
+                currentTotalTime = 1500
+                currentTime = currentTotalTime;
                 showTime();
                 break;
         
@@ -53,7 +55,8 @@ function changeBackground(element, value){
 
                 pause()
                 displayPlay();
-                currentTime = 300;
+                currentTotalTime = 300;
+                currentTime = currentTotalTime;
                 showTime();
                 break;
             
@@ -63,7 +66,8 @@ function changeBackground(element, value){
 
                 pause()
                 displayPlay();
-                currentTime = 900;
+                currentTotalTime = 900;
+                currentTime = currentTotalTime;
                 showTime();
                 break;  
             
@@ -104,7 +108,14 @@ function contagemRegressiva (){
 
     if (currentTime <= 0){
         pause();
+        displayPlay();
         endSound.play();
+        currentTime=currentTotalTime;
+
+        if (current === focoBt){
+            const evento = new CustomEvent("FocoFinalizado");
+            document.dispatchEvent(evento)
+        }
     }
 }
 
@@ -126,8 +137,6 @@ function displayPlay(){
 }
 
 startPauseBt.addEventListener("click", function() {
-    if (currentTime <= 0){currentTime=5;}
-    
     // Start
     if (intervalId){
         pause();
