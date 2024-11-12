@@ -1,3 +1,5 @@
+# Pomodoro Website Project
+
 This is a simple pomodoro web application implemented with JavaScript. This is part of one of the many courses I've done on the Alura platform. The design is provided by them and was updated by the author. 
 
 ### Click on the following image to be redirected to the website
